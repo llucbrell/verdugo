@@ -1,0 +1,36 @@
+{
+  "name": "verdugo",
+  "version": "0.0.1",
+  "description": "Framework layer that executes threejs for quick 3d on web prototyping",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "author": "llucbrell/Lucas_C",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-banner": "^0.6.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-file-creator": "^0.1.3",
+    "grunt-jscs": "^3.0.1",
+    "grunt-jsdoc": "^2.1.0",
+    "grunt-mkdir": "^1.0.0",
+    "grunt-shell": "^1.3.1",
+    "grunt-string-replace": "^1.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "verdugo",
+    "3d",
+    "framework",
+    "web-gl",
+    "three.js",
+    "prototyping",
+    "prototype"
+  ]
+}

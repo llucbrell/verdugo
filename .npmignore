@@ -1,0 +1,7 @@
+#ignore all except what it's from built
+*
+#not built
+!built
+#but built/node_modules
+built/node_modules
+.scripts
