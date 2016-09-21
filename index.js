@@ -97,7 +97,7 @@ _*.^            '.__dP^^~#,  ,_ *,
 
 /** 
  * 
- * Builds the 3d environment.
+ * Builds a new 3d environment.
  * @class Verdugo
  *
  *
@@ -162,23 +162,23 @@ Verdugo.prototype = {
      *
      * 
      */
-     renderOn: function ( divId ) { 
+      renderOn: function ( divId ) { 
             // add the output of the renderer to the html element
               document.getElementById( divId ).appendChild( this.renderer.domElement );
 
             
-      },
+      }
 
-      go: function () {   
+    , go: function () {   
               // call the render function
               this.renderer.render( this.scene, this.camera );
-            },
+            }
 
-     drawCubesTo: function ( coordinates, cubeNumbers, size, hexColor, axe ) {
+    , drawCubesTo: function ( coordinates, cubeNumbers, size, hexColor, axe ) {
      // variables and default values
-      var positionx, 
-          positiony, 
-          positionz;
+      var positionx 
+        , positiony 
+        , positionz;
           axe = axe || 'x';
 
             if ( axe==='x' ) {
@@ -228,14 +228,14 @@ Verdugo.prototype = {
               // add the cube to the scene
               this.scene.add( cube );
                 }
-      },          
+      }          
 
 
-      drawCubesFrom: function ( initialPosition, cubeNumbers, size, hexColor, axe ) {
-       var positionx = initialPosition[ 0 ];
-       var positiony = initialPosition[ 1 ];
-       var positionz = initialPosition[ 2 ];
-      axe = axe || 'x';
+    , drawCubesFrom: function ( initialPosition, cubeNumbers, size, hexColor, axe ) {
+       var positionx = initialPosition[ 0 ]
+         , positiony = initialPosition[ 1 ]
+         , positionz = initialPosition[ 2 ];
+           axe = axe || 'x';
      
             for ( var i =0; i<cubeNumbers; i++ ) {
               // create a cube

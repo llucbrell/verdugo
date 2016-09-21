@@ -120,6 +120,7 @@ module.exports = function (grunt) {
                         //shadow: true // allow variable shadowing (var declared inside and outside a function)
                     // Relaxing options
                         laxbreak: true, // use a break-line more laxe
+                        laxcomma:true, // use to put commas at new line
                     // Environment
                         //browser: true, // jshint knows standard javascript globals from the browser document window, etc., jshint already knows
                         //browserify:  true // used with browserify tool of npm --> for front end dev
