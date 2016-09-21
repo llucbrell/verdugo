@@ -157,114 +157,271 @@ Verdugo.prototype = {
   
     /** 
      * 
-     * Description for the method.
-     * @method rendererON
-     *
+     * Attach a web-gl canvas into a user's div.
+     * @method renderOn
+     * @param {String} divId - the html div id element where the scene will be rendered.
      * 
      */
       renderOn: function ( divId ) { 
             // add the output of the renderer to the html element
               document.getElementById( divId ).appendChild( this.renderer.domElement );
-
             
       }
 
+    /** 
+     * 
+     * Execute the renderer. Move all elements from the scene to the canvas.
+     * @method go
+     *
+     * 
+     */
     , go: function () {   
               // call the render function
               this.renderer.render( this.scene, this.camera );
             }
 
+    /** 
+     * 
+     * Draws an array of cubes to the scene using the coordinates of the last cube.
+     * @method drawCubesTo
+     * @param {Array} coordinates - the x,y,z coordinates of the last cube of the array
+     * @param {integer} cubeNumbers - the number of cubes that the array is made of
+     * @param {integer} size - the longitude of the side of the cubes
+     * @param {hexadecimal} hexColor - the color of the cubes
+     * @param {String} axe - The directon of the cube's array x', 'y' or 'z' axe. 
+     * 
+     */
     , drawCubesTo: function ( coordinates, cubeNumbers, size, hexColor, axe ) {
      // variables and default values
-      var positionx 
-        , positiony 
-        , positionz;
+      var _positionx 
+        , _positiony 
+        , _positionz;
           axe = axe || 'x';
 
             if ( axe==='x' ) {
-               positionx = coordinates[ 0 ] - ( size*cubeNumbers+size );
-               positiony = coordinates[ 1 ];
-               positionz = coordinates[ 2 ];
+               _positionx = coordinates[ 0 ] - ( size*cubeNumbers+size );
+               _positiony = coordinates[ 1 ];
+               _positionz = coordinates[ 2 ];
             }
           
             if ( axe==='y' ) {
-               positionx = coordinates[ 0 ];
-               positiony = coordinates[ 1 ] - ( size*cubeNumbers+size );
-               positionz = coordinates[ 2 ]; 
+               _positionx = coordinates[ 0 ];
+               _positiony = coordinates[ 1 ] - ( size*cubeNumbers+size );
+               _positionz = coordinates[ 2 ]; 
             }
           
             if ( axe==='z' ) {
-               positionx = coordinates[ 0 ];
-               positiony = coordinates[ 1 ];
-               positionz = coordinates[ 2 ] - ( size*cubeNumbers +size );
+               _positionx = coordinates[ 0 ];
+               _positiony = coordinates[ 1 ];
+               _positionz = coordinates[ 2 ] - ( size*cubeNumbers +size );
             }
           
           
                 for ( var i =0; i<cubeNumbers; i++ ) {
                   // create a cube
-                  var cubeGeometry = new THREE.BoxGeometry( size, size, size );
-                  var cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
-                  var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
-                  cube.castShadow = true;
-                  cube.receiveShadow = true;
+                  var _cubeGeometry = new THREE.BoxGeometry( size, size, size );
+                  var _cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+                  var _cube = new THREE.Mesh( _cubeGeometry, _cubeMaterial );
+                  _cube.castShadow = true;
+                  _cube.receiveShadow = true;
     
               //actualize the cube position
-              if ( axe==='x' ) positionx+=size;
+              if ( axe==='x' ) _positionx += size;
                   
               //actualize the cube position
-              if ( axe==='y' ) positiony+=size;
+              if ( axe==='y' ) _positiony += size;
              
               //actualize the cube position
-              if ( axe==='z' )  positionz+=size;
+              if ( axe==='z' )  _positionz += size;
     
                 
                 
               
               // position the cube
-              cube.position.x = positionx;
-              cube.position.y = positiony;
-              cube.position.z = positionz;
+              _cube.position.x = _positionx;
+              _cube.position.y = _positiony;
+              _cube.position.z = _positionz;
     
               // add the cube to the scene
-              this.scene.add( cube );
+              this.scene.add( _cube );
                 }
       }          
 
-
+    /** 
+     * 
+     * Draws an array of cubes to the scene using the coordinates of the first cube.
+     * @method drawCubesFrom
+     * @param {Array} initialPosition - the x,y,z coordinates of the first cube of the array
+     * @param {integer} cubeNumbers - the number of cubes that the array is made of
+     * @param {integer} size - the longitude of the side of the cubes
+     * @param {hexadecimal} hexColor - the color of the cubes
+     * @param {String} axe - The directon of the cube's array x', 'y' or 'z' axe. 
+     * 
+     */
     , drawCubesFrom: function ( initialPosition, cubeNumbers, size, hexColor, axe ) {
-       var positionx = initialPosition[ 0 ]
-         , positiony = initialPosition[ 1 ]
-         , positionz = initialPosition[ 2 ];
+       var _positionx = initialPosition[ 0 ]
+         , _positiony = initialPosition[ 1 ]
+         , _positionz = initialPosition[ 2 ];
            axe = axe || 'x';
      
             for ( var i =0; i<cubeNumbers; i++ ) {
               // create a cube
-              var cubeGeometry = new THREE.BoxGeometry( size, size, size );
-              var cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
-              var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
-              cube.castShadow = true;
-              cube.receiveShadow = true;
+              var _cubeGeometry = new THREE.BoxGeometry( size, size, size );
+              var _cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+              var _cube = new THREE.Mesh( _cubeGeometry, _cubeMaterial );
+              _cube.castShadow = true;
+              _cube.receiveShadow = true;
             //  if(!axe){axe='x'}
      
             // position the cube
-            cube.position.x = positionx;
-            cube.position.y = positiony;
-            cube.position.z = positionz;
+            _cube.position.x = _positionx;
+            _cube.position.y = _positiony;
+            _cube.position.z = _positionz;
      
                 
                   //actualize the cube position
-                  if ( axe==='x' ) positionx+=size;
+                  if ( axe==='x' ) _positionx += size;
                 
                   //actualize the cube position
-                  if ( axe==='y' ) positiony+=size;               
+                  if ( axe==='y' ) _positiony += size;               
                  
                   //actualize the cube position
-                  if ( axe==='z' )positionz+=size;
+                  if ( axe==='z' ) _positionz += size;
                 
      
                 // add the cube to the scene
-                this.scene.add( cube );
+                this.scene.add( _cube );
             }
+      }
+
+    /** 
+     * 
+     * Draws a cubed line from the coordinates passed to this function.
+     * @method drawLineFrom
+     * @param {Array} initialPosition - the x,y,z coordinates where the line start
+     * @param {integer} long - the longitude of the line
+     * @param {integer} width - the width of the line, the other two axes longitude
+     * @param {hexadecimal} hexColor - the color of the cubes
+     * @param {String} axe - The directon of the line , x, y or z. The longitude it's applied to this parameter 
+     * 
+     */
+    , drawLineFrom: function ( initialPosition, long, width, hexColor, axe ) {
+           var _positionx = initialPosition[ 0 ]
+             , _positiony = initialPosition[ 1 ]
+             , _positionz = initialPosition[ 2 ]
+             , _x
+             , _y
+             , _z;
+               axe = axe || 'x';
+         
+
+                  //actualize the cube position
+                  if ( axe==='x' ) {
+                    _x = long;
+                    _y = width;
+                    _z = width;
+                    _positionx= ( ( _positionx - long )/2 ) + width;
+                    }
+                    
+                  //actualize the cube position
+                  if ( axe==='y' ) {
+                    _x = width;
+                    _y = long;
+                    _z = width;
+                    _positiony= ( ( _positiony - long )/2 ) +width;
+
+                    } 
+                
+                  //actualize the cube position
+                  if ( axe==='z' ) {
+                    _x = width;
+                    _y = width;
+                    _z = long;
+                    _positionz= ( ( _positionz - long )/2 ) +width;
+
+                    }
+                  // create a cube
+                  var _cubeGeometry = new THREE.BoxGeometry( _x, _y, _z );
+                  var _cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+                  var _cube = new THREE.Mesh( _cubeGeometry, _cubeMaterial );
+                  _cube.castShadow = true;
+                  _cube.receiveShadow = true;
+                //  if(!axe){axe='x'}
+         
+                // position the cube
+                _cube.position.x = _positionx;
+                _cube.position.y = _positiony;
+                _cube.position.z = _positionz;
+                    
+         
+                    // add the cube to the scene
+                    this.scene.add( _cube );
+                
+      }
+
+    /** 
+     * 
+     * Draws a cubed line to the coordinates passed to this function.
+     * @method drawLineTo
+     * @param {Array} initialPosition - the x,y,z coordinates where the line start
+     * @param {integer} long - the longitude of the line
+     * @param {integer} width - the width of the line, the other two axes longitude
+     * @param {hexadecimal} hexColor - the color of the cubes
+     * @param {String} axe - The directon of the line , x, y or z. The longitude it's applied to this parameter 
+     * 
+     */
+    , drawLineTo: function ( finalPosition, long, width, hexColor, axe ) {
+           var _positionx = finalPosition[ 0 ]
+             , _positiony = finalPosition[ 1 ]
+             , _positionz = finalPosition[ 2 ]
+             , _x
+             , _y
+             , _z;
+               axe = axe || 'x';
+         
+
+                  //actualize the cube position
+                  if ( axe==='x' ) {
+                    _x = long;
+                    _y = width;
+                    _z = width;
+                    _positionx= ( ( _positionx + long )/2 ) + width;
+                    }
+                    
+                  //actualize the cube position
+                  if ( axe==='y' ) {
+                    _x = width;
+                    _y = long;
+                    _z = width;
+                    _positiony= ( ( _positiony + long )/2 ) +width;
+
+                    } 
+                
+                  //actualize the cube position
+                  if ( axe==='z' ) {
+                    _x = width;
+                    _y = width;
+                    _z = long;
+                    _positionz= ( ( _positionz + long )/2 ) +width;
+
+                    }
+                  // create a cube
+                  var _cubeGeometry = new THREE.BoxGeometry( _x, _y, _z );
+                  var _cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+                  var _cube = new THREE.Mesh( _cubeGeometry, _cubeMaterial );
+                  _cube.castShadow = true;
+                  _cube.receiveShadow = true;
+                //  if(!axe){axe='x'}
+         
+                // position the cube
+                _cube.position.x = _positionx;
+                _cube.position.y = _positiony;
+                _cube.position.z = _positionz;
+                    
+         
+                    // add the cube to the scene
+                    this.scene.add( _cube );
+                
       }
 
 };
