@@ -730,7 +730,7 @@ module.exports = function (grunt) {
 
                         ]);
 
-    grunt.registerTask('doc', // for quick working comprobations 
+    grunt.registerTask('doc', // for quick doc building 
                        [
                         'shell:restore-doc',
                         'jsdoc:dev-build',                     
