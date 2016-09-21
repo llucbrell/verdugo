@@ -63,6 +63,213 @@
  HHEADER*/
 
 
+ /*                     __
+               _ww   _a+"D
+         y#,  _r^ # _*^  y`
+        q0 0 a"   W*`    F   ____
+     ;  #^ Mw`  __`. .  4-~~^^`
+    _  _P   ` /'^           `www=.   ┌─┐┬  ┌─┐┌─┐┌─┐
+  ,    +F    `                q      │  │  ├─┤└─┐└─┐
+  K ]                         ^K`    └─┘┴─┘┴ ┴└─┘└─┘
+, #_                . ___ r    ],    
+_*.^            '.__dP^^~#,  ,_ *,    
+^b    / _         ``     _F   ]  ]_  
+ '___  '               ~~^    ]   [
+ :` ]b_    ~k_               ,`  yl   * NAME: Verdugo
+   #P        `*a__       __a~   z~`   * in: index.js   
+   #L     _      ^------~^`   ,/       _______________________
+    ~-vww*"v_               _/`                                 
+            ^"q_         _x"                                    
+             __#my..___p/`mma____    
+         _awP",`,^"-_"^`._ L L  #     
+       _#0w_^_^,^r___...._ t [],"w                          
+      e^   ]b_x^_~^` __,  .]Wy7` x`     
+       '=w__^9*-*MF`      ^[_.=
+           ^"y   qw/"^_____^~9 t
+             ]_l  ,'^_`..===  x'
+              ">.ak__awwwwWW###r
+                ##WWWWWWWWWWWWWW__
+               _WWWWWWMM#WWWW_JP^"~-=w_
+     .____awwmp_wNw#[w/`     ^#,      ~b___.
+      ` ^^^~^"W___            ]Raaaamw~`^``^^~
+                ^~"~---~~~~~~`              
+*/
+
+/** 
+ * 
+ * Builds the 3d environment.
+ * @class Verdugo
+ *
+ *
+ */
+function Verdugo () {
+   
+   /**
+   * 
+   * @property {THREE.Scene} scene - a scene, that will hold all our elements such as objects, cameras and lights. 
+   *
+   */
+   this.scene= new THREE.Scene();
+   /** use scene.background to set the background color*/
+   this.scene.background = new THREE.Color();
+
+   /**
+   * 
+   * @property {THREE.Camera} camera - a camera, which defines where we're looking at.
+   * @default 45,window.innerWidth/window.innerHeight,0.1,1000 -- [-50,30,-90]
+   *
+   */
+   this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+   // position and point the camera to the center of the scene
+   this.camera.position.x = -50;
+   this.camera.position.y = 30;
+   this.camera.position.z = -90;
+   this.camera.lookAt(this.scene.position);
+   
+   /**
+   * 
+   * @property {THREE.Renderer} renderer - a renderer, which renders all the 3d objects.
+   * @default setSize-window.innerWidth, window.innerHeight -- shadowMapEnabled-true
+   *
+   */
+   this.renderer = new THREE.WebGLRenderer();
+   // set the default values of the renderer
+   //this.renderer.setClearColorHex(new THREE.Color(0xEEEEEE, 1.0)); // changed to transparent by default
+   this.renderer.setSize(window.innerWidth, window.innerHeight);
+   this.renderer.shadowMapEnabled = true;
+
+   
+   /**
+   * 
+   * @property {THREE.Spotlight} spotlight - add spotlight for the shadows
+   * @default position[-40,60,-90] -- castShadow
+   *
+   */ 
+   this.spotLight = new THREE.SpotLight(0xffffff);
+   this.spotLight.position.set(-40, 60, -90);
+   this.spotLight.castShadow = true;
+
+   //add spotlight to the scene
+   this.scene.add(this.spotLight);
+} 
+
+Verdugo.prototype = {
+  
+    /** 
+     * 
+     * Description for the method.
+     * @method methodName
+     *
+     * 
+     * @return return_value
+     */
+     renderOn:function (divId) { 
+            // add the output of the renderer to the html element
+              document.getElementById(divId).appendChild(this.renderer.domElement);
+
+            
+      },
+
+      go: function () {   
+              // call the render function
+              this.renderer.render(this.scene, this.camera);
+            },
+
+     drawCubesTo:function ( coordinates, cube_numbers, size, hex_color, axe='x') {
+            if(axe==='x'){
+              var positionx = coordinates[0] - (size*cube_numbers+size);
+              var positiony = coordinates[1];
+              var positionz = coordinates[2];
+            }
+          
+            if(axe==='y'){
+              var positionx = coordinates[0];
+              var positiony = coordinates[1] - (size*cube_numbers+size);
+              var positionz = coordinates[2]; 
+            }
+          
+            if(axe==='z'){
+              var positionx = coordinates[0];
+              var positiony = coordinates[1];
+              var positionz = coordinates[2] - (size*cube_numbers +size);
+
+            }
+          
+          
+                for(var i =0; i<cube_numbers; i++){
+                  // create a cube
+                  var cubeGeometry = new THREE.BoxGeometry(size, size, size);
+                  var cubeMaterial = new THREE.MeshLambertMaterial({color: hex_color});
+                  var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+                  cube.castShadow = true;
+                  cube.receiveShadow = true;
+    
+    
+              if(axe==='x'){
+    
+                //actualize the cube position
+                positionx+=size;
+              }
+              if(axe==='y'){
+    
+                //actualize the cube position
+                positiony+=size;
+              }
+              if(axe==='z'){
+    
+                //actualize the cube position
+                positionz+=size;
+              }
+              // position the cube
+              cube.position.x = positionx;
+              cube.position.y = positiony;
+              cube.position.z = positionz;
+    
+              // add the cube to the scene
+              this.scene.add(cube);
+                }
+      },          
+
+
+      drawCubesFrom:function (initial_position, cube_numbers, size, hex_color, axe='x') {
+       var positionx = initial_position[0];
+       var positiony = initial_position[1];
+       var positionz = initial_position[2];
+     
+            for(var i =0; i<cube_numbers; i++){
+              // create a cube
+              var cubeGeometry = new THREE.BoxGeometry(size, size, size);
+              var cubeMaterial = new THREE.MeshLambertMaterial({color: hex_color});
+              var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+              cube.castShadow = true;
+              cube.receiveShadow = true;
+            //  if(!axe){axe='x'}
+     
+            // position the cube
+            cube.position.x = positionx;
+            cube.position.y = positiony;
+            cube.position.z = positionz;
+     
+                if(axe==='x'){
+                  //actualize the cube position
+                  positionx+=size;
+                }
+                if(axe==='y'){
+                  //actualize the cube position
+                  positiony+=size;
+                }
+                if(axe==='z'){
+                  //actualize the cube position
+                  positionz+=size;
+                }
+     
+                // add the cube to the scene
+                this.scene.add(cube);
+            }
+      }
+
+};
+  
 
 
 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verdugo-mario-ex</title>
+</head>
+<body>
+<div id="webGLOutput"></div>
+
+<script type="text/javascript">
+function init(){
+// start verdugo
+var verdugo= new Verdugo();	
+// tell verdugo where you wanna render
+verdugo.renderOn("webGLOutput");
+
+var shoe_color= 0x565100;
+var skin_color=0xFDD59C;
+var shirt_color=0x565100;
+var overalls_color=0xAB1632;
+var cap_color=0xAB1632;
+var hair_color=0x565100;
+var eyes_color=0x565100;
+var buttons_color=0xE5CD24;
+var moustache_color=0x565100;
+var block_color=0xF6F930;
+
+
+// verdugo draws
+		verdugo.drawCubesTo( [8, 0, 2], 5, 2 ,  shoe_color, 'z');//shoe	
+            verdugo.drawCubesTo( [10, 0, 2], 5, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [12, 0, 2], 5, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [14, 0, 2], 5, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-10, 0, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-8, 0, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-6, 0, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-4, 0, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-8, 2, 0], 3, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-6, 2, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-4, 2, 2], 5, 2 ,   shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [8, 2, 2], 5, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [10, 2, 2], 5, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [12, 2, 0], 3, 2 ,  shoe_color, 'z');//shoe
+            verdugo.drawCubesTo( [-4, 4, 0], 3, 2 ,  overalls_color, 'z');//peto //leg
+            verdugo.drawCubesTo( [-2, 4, 0], 3, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [0, 4, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [6, 4, 2], 7, 2 ,  overalls_color, 'z');//peto //leg
+            verdugo.drawCubesTo( [8, 4, -4], 3, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [10, 4, -4], 3, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [12, 6, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [14, 6, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-6, 6, 2], 4, 2 ,   skin_color, 'z');//hand //CHANGE HAND POSITION
+            verdugo.drawCubesTo( [-8, 6, 2], 4, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [10, 8, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [12, 8, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [14, 8, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-4, 8, 0], 3, 2 ,   skin_color, 'z');//hand //CHANGE HAND POSITION
+            verdugo.drawCubesTo( [-6, 8, 0], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-8, 8, 0], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-4, 6, 0], 5, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [-2, 6, 0], 5, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [0, 6, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [2, 6, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [4, 6, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [6, 6, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [8, 6, 0], 5, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [10, 6, 0], 5, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [-2, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [0, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [2, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [4, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [6, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [8, 8, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [-4, 10, 0], 3, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesTo( [-6, 10, 0], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-8, 10, 0], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-2, 10, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [0, 10, 0], 6, 2 ,  buttons_color, 'z');//peto //gold
+            verdugo.drawCubesTo( [0, 10, 2], 1, 2 , overalls_color, 'z');//peto //backgold
+            verdugo.drawCubesTo( [2, 10, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [4, 10, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [6, 10, 0], 6, 2 ,  buttons_color, 'z');//peto //gold
+            verdugo.drawCubesTo( [6, 10, 2], 1, 2 ,  overalls_color, 'z');//peto //backgold
+            verdugo.drawCubesTo( [8, 10, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [10, 10, 0], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesTo( [12, 10, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [14, 10, -4], 3, 2 ,   skin_color, 'z');//hand
+            verdugo.drawCubesTo( [-8, 12, 0], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-2, 12, 0], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-4, 12, 0], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-6, 12, 0], 3, 2 ,  shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [0, 12, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [2, 12, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [4, 12, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesTo( [6, 12, 2], 7, 2 ,  overalls_color, 'z');//peto
+            verdugo.drawCubesFrom( [8, 12, -10], 2, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [8, 12, -2], 2, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [10, 12, -10], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesTo( [12, 12, -4], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [14, 12, -4], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-2, 14, 0], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-4, 14, 0], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [-6, 14, 0], 3, 2 ,  shirt_color, 'z');//arm
+            verdugo.drawCubesTo( [0, 14, 0], 5, 2 ,  overalls_color, 'z');//tirant
+            verdugo.drawCubesTo( [8, 14, -10], 1, 2 ,  overalls_color, 'x');//tirant
+            verdugo.drawCubesTo( [8, 14, -2], 1, 2 ,  overalls_color, 'x');//tirant
+            verdugo.drawCubesFrom( [10, 14, -10], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesFrom( [2, 14, -10], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesTo( [6, 14, -2], 2, 2 ,  shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [8, 14, -2], 2, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesTo( [6, 14, -10], 2, 2 ,  shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [8, 14, -10], 1, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesTo( [12, 14, -4], 3, 2 ,   shirt_color, 'z');//arm
+            verdugo.drawCubesFrom( [10, 16, -10], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesFrom( [0, 16, -10], 5, 2 ,   shirt_color, 'z');//shirt
+            verdugo.drawCubesTo( [6, 16, -2], 3, 2 ,  shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [8, 16, -2], 2, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesTo( [8, 16, -2], 1, 2 ,  overalls_color, 'x');//tirant
+            verdugo.drawCubesTo( [6, 16, -10], 3, 2 ,  shirt_color, 'x');//shirt
+            verdugo.drawCubesFrom( [8, 16, -10], 2, 2 ,   shirt_color, 'x');//shirt
+            verdugo.drawCubesTo( [8, 16, -10], 1, 2 ,  overalls_color, 'x');//tirant
+            verdugo.drawCubesTo( [-4, 18, -2], 3, 2 ,   skin_color, 'z');//face
+            verdugo.drawCubesTo( [-2, 18, -2], 3, 2 ,   skin_color, 'z');//face
+            verdugo.drawCubesTo( [8, 18, -2], 3, 2 ,   skin_color, 'z');//face
+            verdugo.drawCubesTo( [-6, 18, -2], 3, 2 ,   skin_color, 'z');//face
+            verdugo.drawCubesFrom( [-4, 18, -2], 6, 2 ,  skin_color, 'x');
+            verdugo.drawCubesFrom( [-4, 18, -10], 6, 2 ,  skin_color, 'x');
+            verdugo.drawCubesTo( [-8, 20, 0], 5, 2 ,   moustache_color, 'z');//moustache
+            verdugo.drawCubesTo( [-6, 20, 2], 7, 2 ,   moustache_color, 'z');//moustache
+            verdugo.drawCubesTo( [-4, 20, 2], 7, 2 ,   moustache_color, 'z');//moustache
+            verdugo.drawCubesTo( [-2, 20, 2], 7, 2 ,   moustache_color, 'z');//moustache
+            verdugo.drawCubesFrom( [0, 20, -2], 4, 2 ,   skin_color, 'x');//face
+            verdugo.drawCubesFrom( [0, 20, -10], 4, 2 ,   skin_color, 'x');//face
+            verdugo.drawCubesFrom( [10, 20, -12], 7 , 2 ,  hair_color, 'z');//hair POSSIBLE 5
+            verdugo.drawCubesFrom( [8, 20, -12], 7 , 2 ,  hair_color, 'z');//hair POSSIBLE 5
+            verdugo.drawCubesTo( [-10, 22, -2], 3, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesTo( [-8, 22, 0], 5, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesTo( [-6, 22, 0], 5, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesTo( [-4, 22, 2], 7, 2 ,   moustache_color, 'z');//moustache
+            verdugo.drawCubesFrom( [-2, 22, -2], 3, 2 ,   skin_color, 'x'); //face
+            verdugo.drawCubesFrom( [-2, 22, -10], 3, 2 ,   skin_color, 'x'); //face
+            verdugo.drawCubesFrom( [4, 22, -2], 2, 2 ,   hair_color, 'x');//patilla
+            verdugo.drawCubesFrom( [4, 22, -10], 2, 2 ,   hair_color, 'x');//patilla
+            verdugo.drawCubesFrom( [8, 22, -12], 7, 2 ,   skin_color, 'z');//ear
+            verdugo.drawCubesFrom( [10, 22, -12], 7 , 2 ,  hair_color, 'z');//hair POSSIBLE 5
+            verdugo.drawCubesTo( [-8, 24, -2], 3, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesTo( [-6, 24, -2], 3, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesTo( [-4, 24, -2], 3, 2 ,   skin_color, 'z');//nose
+            verdugo.drawCubesFrom([-2, 24, -4], 1, 2 ,   eyes_color, 'x');//eye
+            verdugo.drawCubesFrom([-2, 24, -8], 1, 2 ,   eyes_color, 'x');//eye
+            verdugo.drawCubesFrom([0, 24, -2], 3, 2 ,   skin_color, 'x'); //face
+            verdugo.drawCubesFrom([0, 24, -10], 3, 2 ,   skin_color, 'x'); //face
+            verdugo.drawCubesFrom([6, 24, -2], 1, 2 ,   hair_color, 'x');//patilla
+            verdugo.drawCubesFrom([6, 24, -10], 1, 2 ,   hair_color, 'x');//patilla
+            verdugo.drawCubesFrom([8, 24, -12], 7, 2 ,   skin_color, 'z');//ear
+            verdugo.drawCubesFrom([10, 24, -12], 7 , 2 ,  hair_color, 'z');//hair POSSIBLE 5
+            verdugo.drawCubesFrom([-2, 26, -4], 1, 2 ,   eyes_color, 'x');//eye
+            verdugo.drawCubesFrom( [-2, 26, -8], 1, 2 ,   eyes_color, 'x');//eye
+            verdugo.drawCubesTo([-2, 26, -6], 1, 2 ,  skin_color, 'x');//face
+            verdugo.drawCubesTo([4, 26, -2], 2, 2 ,  skin_color, 'x');//face
+            verdugo.drawCubesTo([4, 26, -10], 2, 2 ,  skin_color, 'x');//face
+            verdugo.drawCubesFrom( [4, 26, -12], 3, 2 ,  hair_color, 'x');//hair
+            verdugo.drawCubesFrom( [4, 26, 0], 3, 2 ,  hair_color, 'x');//hair
+            verdugo.drawCubesFrom( [8, 26, -10], 5, 2 ,  hair_color, 'z');//hair
+            verdugo.drawCubesFrom( [0, 30, 0], 3, 2 ,  cap_color, 'x');//hat
+            verdugo.drawCubesFrom( [0, 30, -12], 3, 2 ,  cap_color, 'x');//hat
+            verdugo.drawCubesFrom( [6, 30, -10], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesFrom( [4, 30, -10], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesFrom( [2, 30, -10], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesFrom( [0, 30, -10], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesFrom( [-2, 30, -10], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesTo( [-8, 28, 0], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesTo( [-6, 28, 0], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesTo( [-4, 28, 0], 5, 2 ,  cap_color, 'z');//hat
+            verdugo.drawCubesFrom( [-6, 28, -12], 8, 2 ,  cap_color, 'x');//hat
+            verdugo.drawCubesFrom( [-6, 28, 0], 8, 2 ,  cap_color, 'x');//hat
+            verdugo.drawCubesFrom( [8, 28, -10], 5, 2 ,  cap_color, 'z');//hat
+
+            verdugo.drawCubesFrom( [2, -16, -4], 1, 30,  block_color,'y');//block
+
+// render            
+verdugo.go();
+}
+window.onload = init;
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+<script type="text/javascript" src="../index.js"></script>
+
+</body>
+</html>
