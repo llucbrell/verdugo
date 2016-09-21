@@ -119,12 +119,12 @@ function Verdugo () {
    * @default 45,window.innerWidth/window.innerHeight,0.1,1000 -- [-50,30,-90]
    *
    */
-   this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+   this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 );
    // position and point the camera to the center of the scene
    this.camera.position.x = -50;
    this.camera.position.y = 30;
    this.camera.position.z = -90;
-   this.camera.lookAt(this.scene.position);
+   this.camera.lookAt( this.scene.position );
    
    /**
    * 
@@ -135,7 +135,7 @@ function Verdugo () {
    this.renderer = new THREE.WebGLRenderer();
    // set the default values of the renderer
    //this.renderer.setClearColorHex(new THREE.Color(0xEEEEEE, 1.0)); // changed to transparent by default
-   this.renderer.setSize(window.innerWidth, window.innerHeight);
+   this.renderer.setSize( window.innerWidth, window.innerHeight );
    this.renderer.shadowMapEnabled = true;
 
    
@@ -145,12 +145,12 @@ function Verdugo () {
    * @default position[-40,60,-90] -- castShadow
    *
    */ 
-   this.spotLight = new THREE.SpotLight(0xffffff);
-   this.spotLight.position.set(-40, 60, -90);
+   this.spotLight = new THREE.SpotLight( 0xffffff );
+   this.spotLight.position.set( -40, 60, -90 );
    this.spotLight.castShadow = true;
 
    //add spotlight to the scene
-   this.scene.add(this.spotLight);
+   this.scene.add( this.spotLight );
 } 
 
 Verdugo.prototype = {
@@ -158,89 +158,90 @@ Verdugo.prototype = {
     /** 
      * 
      * Description for the method.
-     * @method methodName
+     * @method rendererON
      *
      * 
-     * @return return_value
      */
-     renderOn:function (divId) { 
+     renderOn: function ( divId ) { 
             // add the output of the renderer to the html element
-              document.getElementById(divId).appendChild(this.renderer.domElement);
+              document.getElementById( divId ).appendChild( this.renderer.domElement );
 
             
       },
 
       go: function () {   
               // call the render function
-              this.renderer.render(this.scene, this.camera);
+              this.renderer.render( this.scene, this.camera );
             },
 
-     drawCubesTo:function ( coordinates, cube_numbers, size, hex_color, axe='x') {
-            if(axe==='x'){
-              var positionx = coordinates[0] - (size*cube_numbers+size);
-              var positiony = coordinates[1];
-              var positionz = coordinates[2];
-            }
-          
-            if(axe==='y'){
-              var positionx = coordinates[0];
-              var positiony = coordinates[1] - (size*cube_numbers+size);
-              var positionz = coordinates[2]; 
-            }
-          
-            if(axe==='z'){
-              var positionx = coordinates[0];
-              var positiony = coordinates[1];
-              var positionz = coordinates[2] - (size*cube_numbers +size);
+     drawCubesTo: function ( coordinates, cubeNumbers, size, hexColor, axe ) {
+     // variables and default values
+      var positionx, 
+          positiony, 
+          positionz;
+          axe = axe || 'x';
 
+            if ( axe==='x' ) {
+               positionx = coordinates[ 0 ] - ( size*cubeNumbers+size );
+               positiony = coordinates[ 1 ];
+               positionz = coordinates[ 2 ];
+            }
+          
+            if ( axe==='y' ) {
+               positionx = coordinates[ 0 ];
+               positiony = coordinates[ 1 ] - ( size*cubeNumbers+size );
+               positionz = coordinates[ 2 ]; 
+            }
+          
+            if ( axe==='z' ) {
+               positionx = coordinates[ 0 ];
+               positiony = coordinates[ 1 ];
+               positionz = coordinates[ 2 ] - ( size*cubeNumbers +size );
             }
           
           
-                for(var i =0; i<cube_numbers; i++){
+                for ( var i =0; i<cubeNumbers; i++ ) {
                   // create a cube
-                  var cubeGeometry = new THREE.BoxGeometry(size, size, size);
-                  var cubeMaterial = new THREE.MeshLambertMaterial({color: hex_color});
-                  var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+                  var cubeGeometry = new THREE.BoxGeometry( size, size, size );
+                  var cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+                  var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
                   cube.castShadow = true;
                   cube.receiveShadow = true;
     
+              //actualize the cube position
+              if ( axe==='x' ) positionx+=size;
+                  
+              //actualize the cube position
+              if ( axe==='y' ) positiony+=size;
+             
+              //actualize the cube position
+              if ( axe==='z' )  positionz+=size;
     
-              if(axe==='x'){
-    
-                //actualize the cube position
-                positionx+=size;
-              }
-              if(axe==='y'){
-    
-                //actualize the cube position
-                positiony+=size;
-              }
-              if(axe==='z'){
-    
-                //actualize the cube position
-                positionz+=size;
-              }
+                
+                
+              
               // position the cube
               cube.position.x = positionx;
               cube.position.y = positiony;
               cube.position.z = positionz;
     
               // add the cube to the scene
-              this.scene.add(cube);
+              this.scene.add( cube );
                 }
       },          
 
 
-      drawCubesFrom:function (initial_position, cube_numbers, size, hex_color, axe='x') {
-       var positionx = initial_position[0];
-       var positiony = initial_position[1];
-       var positionz = initial_position[2];
+      drawCubesFrom: function ( initialPosition, cubeNumbers, size, hexColor, axe ) {
+       var positionx = initialPosition[ 0 ];
+       var positiony = initialPosition[ 1 ];
+       var positionz = initialPosition[ 2 ];
+      axe = axe || 'x';
      
-            for(var i =0; i<cube_numbers; i++){
+            for ( var i =0; i<cubeNumbers; i++ ) {
               // create a cube
-              var cubeGeometry = new THREE.BoxGeometry(size, size, size);
-              var cubeMaterial = new THREE.MeshLambertMaterial({color: hex_color});
-              var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+              var cubeGeometry = new THREE.BoxGeometry( size, size, size );
+              var cubeMaterial = new THREE.MeshLambertMaterial({ color: hexColor });
+              var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
               cube.castShadow = true;
               cube.receiveShadow = true;
             //  if(!axe){axe='x'}
@@ -250,21 +251,19 @@ Verdugo.prototype = {
             cube.position.y = positiony;
             cube.position.z = positionz;
      
-                if(axe==='x'){
+                
                   //actualize the cube position
-                  positionx+=size;
-                }
-                if(axe==='y'){
+                  if ( axe==='x' ) positionx+=size;
+                
                   //actualize the cube position
-                  positiony+=size;
-                }
-                if(axe==='z'){
+                  if ( axe==='y' ) positiony+=size;               
+                 
                   //actualize the cube position
-                  positionz+=size;
-                }
+                  if ( axe==='z' )positionz+=size;
+                
      
                 // add the cube to the scene
-                this.scene.add(cube);
+                this.scene.add( cube );
             }
       }
 
