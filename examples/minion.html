@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verdugo-minion-ex</title>
+</head>
+<body>
+<div id="webGLOutput"></div>
+
+<script type="text/javascript">
+function init(){
+// start verdugo
+var verdugo= new Verdugo();	
+// tell verdugo where you wanna render
+verdugo.renderOn("webGLOutput");
+
+var shoe_color= 0x000000
+var skin_color=0xFFD800;
+var overalls_color=0x0026FF;
+var glasses_color=0x808080;
+var eyes_color= 0xFFFFFF;
+
+
+
+// verdugo draws
+
+var BLOCK_SIZE = 2;
+var POSITION_X = 0;
+var POSITION_Y = -50;
+var POSITION_Z = 40;
+
+
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE *5 ,POSITION_Y + BLOCK_SIZE * 1 , POSITION_Z + BLOCK_SIZE],  BLOCK_SIZE * 3 , BLOCK_SIZE, BLOCK_SIZE*3, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE *5 ,POSITION_Y + BLOCK_SIZE * 2 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE *5 ,POSITION_Y + BLOCK_SIZE * 3 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE*5 , POSITION_Y + BLOCK_SIZE * 4 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            //shoes
+            verdugo.drawCube( [POSITION_X + 0, POSITION_Y+ BLOCK_SIZE * 1 , POSITION_Z + BLOCK_SIZE],  BLOCK_SIZE * 3 , BLOCK_SIZE, BLOCK_SIZE*3, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE, POSITION_Y + BLOCK_SIZE * 2 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE, POSITION_Y + BLOCK_SIZE * 3 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE, POSITION_Y + BLOCK_SIZE * 4 , POSITION_Z + BLOCK_SIZE *2],  BLOCK_SIZE * 2 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            //shoes
+             verdugo.drawCube( [POSITION_X + BLOCK_SIZE  , POSITION_Y + BLOCK_SIZE * 5 , POSITION_Z - (BLOCK_SIZE*1.5)],  BLOCK_SIZE * 6 , BLOCK_SIZE * 5, BLOCK_SIZE*1.5, overalls_color);//overalls
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE*2)  , POSITION_Y + BLOCK_SIZE * 6 , POSITION_Z - (BLOCK_SIZE *2)],  BLOCK_SIZE * 4 , BLOCK_SIZE * 3, BLOCK_SIZE, overalls_color);//overalls
+            verdugo.drawCube( [POSITION_X + 0 , POSITION_Y + BLOCK_SIZE * 4 , POSITION_Z + (-BLOCK_SIZE/2)],  BLOCK_SIZE * 8 , BLOCK_SIZE * 6, BLOCK_SIZE * 7 + (BLOCK_SIZE/2), overalls_color);
+            verdugo.drawCube( [POSITION_X + (-BLOCK_SIZE) + (-BLOCK_SIZE/3), POSITION_Y + BLOCK_SIZE * 10 , POSITION_Z + (-BLOCK_SIZE/2)],  BLOCK_SIZE , BLOCK_SIZE , (BLOCK_SIZE * 7) + (BLOCK_SIZE/2), overalls_color);
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE*9) + (-BLOCK_SIZE), POSITION_Y + BLOCK_SIZE * 10 , POSITION_Z + (-BLOCK_SIZE/2)],  BLOCK_SIZE , BLOCK_SIZE , (BLOCK_SIZE * 7) + (BLOCK_SIZE/2), overalls_color);
+            //overalls
+            verdugo.drawCube( [POSITION_X - BLOCK_SIZE , POSITION_Y + BLOCK_SIZE * 10 , POSITION_Z + 0],  BLOCK_SIZE * 10 , BLOCK_SIZE * 8, BLOCK_SIZE * 7, skin_color);
+            verdugo.drawCube( [POSITION_X +0 , POSITION_Y + BLOCK_SIZE * 18 , POSITION_Z + BLOCK_SIZE],  BLOCK_SIZE * 8 , BLOCK_SIZE, BLOCK_SIZE * 5, skin_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE , POSITION_Y + BLOCK_SIZE * 19 , POSITION_Z + (BLOCK_SIZE *2)],  BLOCK_SIZE * 6 , BLOCK_SIZE, BLOCK_SIZE * 3, skin_color);
+            verdugo.drawCube( [POSITION_X + BLOCK_SIZE  , POSITION_Y + BLOCK_SIZE * 10 , POSITION_Z - BLOCK_SIZE],  BLOCK_SIZE * 6 , BLOCK_SIZE * 8, BLOCK_SIZE, skin_color);//body
+            verdugo.drawCube( [POSITION_X + ((- BLOCK_SIZE ) )   , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE /2)],  BLOCK_SIZE *2 , BLOCK_SIZE * 2, BLOCK_SIZE*8, shoe_color);//glasses band
+            verdugo.drawCube( [POSITION_X + (( BLOCK_SIZE *7) )   , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE /2)],  BLOCK_SIZE *2 , BLOCK_SIZE * 2, BLOCK_SIZE*8, shoe_color);//glasses band
+            //glasses band
+            verdugo.drawCube( [POSITION_X + ((- BLOCK_SIZE *4 )/ 3)   , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE /2)],  (BLOCK_SIZE * 2)/3  , BLOCK_SIZE * 2, BLOCK_SIZE*8, shoe_color);//glasses band
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE)  , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE*2, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 6)  , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE*2, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 3)  , POSITION_Y + BLOCK_SIZE * 18 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE*2, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 3)  , POSITION_Y + BLOCK_SIZE * 13 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE*2, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 2)  , POSITION_Y + BLOCK_SIZE * 14 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 2)  , POSITION_Y + BLOCK_SIZE * 17 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 5)  , POSITION_Y + BLOCK_SIZE * 14 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE * 5)  , POSITION_Y + BLOCK_SIZE * 17 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, glasses_color);//glasses
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE *2)  , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE*2, BLOCK_SIZE, eyes_color);//ye
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE *5)  , POSITION_Y + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE, BLOCK_SIZE*2, BLOCK_SIZE, eyes_color);//eye
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE *3)  , POSITION_Y + BLOCK_SIZE * 14 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE*2, BLOCK_SIZE, BLOCK_SIZE, eyes_color);//eye
+            verdugo.drawCube( [POSITION_X  + ( BLOCK_SIZE *3)  , POSITION_Y + BLOCK_SIZE * 17 , POSITION_Z - (BLOCK_SIZE*2)],  BLOCK_SIZE*2, BLOCK_SIZE, BLOCK_SIZE, eyes_color);//eye
+            verdugo.drawCube([POSITION_X  + ( BLOCK_SIZE *3)  , POSITION_Y  + BLOCK_SIZE * 15 , POSITION_Z - (BLOCK_SIZE * 2)],  BLOCK_SIZE * 2 , BLOCK_SIZE * 2, BLOCK_SIZE, shoe_color); //glasses band    
+            verdugo.drawCube([POSITION_X  + ( BLOCK_SIZE*2 )  , POSITION_Y  + BLOCK_SIZE * 11 , POSITION_Z - (BLOCK_SIZE * 2- (BLOCK_SIZE/1.5))],  BLOCK_SIZE * 4 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);//mouth
+            verdugo.drawCube([POSITION_X  + ( BLOCK_SIZE )  , POSITION_Y  + BLOCK_SIZE * 12 , POSITION_Z - (BLOCK_SIZE * 2- (BLOCK_SIZE/1.5))],  BLOCK_SIZE * 1 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);
+            verdugo.drawCube([POSITION_X  + ( BLOCK_SIZE*6 )  , POSITION_Y  + BLOCK_SIZE * 12 , POSITION_Z - (BLOCK_SIZE * 2- (BLOCK_SIZE/1.5))],  BLOCK_SIZE * 1 , BLOCK_SIZE, BLOCK_SIZE, shoe_color);//mouth
+            verdugo.drawCube( [POSITION_X + (-BLOCK_SIZE)  , POSITION_Y + BLOCK_SIZE * 6 , POSITION_Z - (-BLOCK_SIZE )],  BLOCK_SIZE , BLOCK_SIZE * 4, BLOCK_SIZE*3, skin_color);//arm
+            verdugo.drawCube( [POSITION_X + (-BLOCK_SIZE *2)  , POSITION_Y + BLOCK_SIZE * 4 , POSITION_Z - (-BLOCK_SIZE )],  BLOCK_SIZE *2 , BLOCK_SIZE *2, BLOCK_SIZE*3, skin_color);
+            verdugo.drawCube( [POSITION_X + (-BLOCK_SIZE )  , POSITION_Y + BLOCK_SIZE * 5 , POSITION_Z ],  BLOCK_SIZE  , BLOCK_SIZE, BLOCK_SIZE, skin_color);//arm
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE*9)  , POSITION_Y + BLOCK_SIZE * 6 , POSITION_Z - (-BLOCK_SIZE )],  BLOCK_SIZE , BLOCK_SIZE * 4, BLOCK_SIZE*3, skin_color);//arm
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE *9)  , POSITION_Y + BLOCK_SIZE * 4 , POSITION_Z - (-BLOCK_SIZE )],  BLOCK_SIZE *2 , BLOCK_SIZE *2, BLOCK_SIZE*3, skin_color);
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE *8)  , POSITION_Y + BLOCK_SIZE * 5 , POSITION_Z],  BLOCK_SIZE  , BLOCK_SIZE, BLOCK_SIZE, skin_color);//arm
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE)  , POSITION_Y + BLOCK_SIZE * 9 , POSITION_Z-((BLOCK_SIZE*1.6))],  BLOCK_SIZE  , BLOCK_SIZE, BLOCK_SIZE, glasses_color);//button
+            verdugo.drawCube( [POSITION_X + (BLOCK_SIZE*6)  , POSITION_Y + BLOCK_SIZE * 9 , POSITION_Z-((BLOCK_SIZE*1.6))],  BLOCK_SIZE  , BLOCK_SIZE, BLOCK_SIZE, glasses_color);//button
+
+
+
+
+        
+
+// render            
+verdugo.go();
+}
+window.onload = init;
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+<script type="text/javascript" src="../index.js"></script>
+
+</body>
+</html>
