@@ -165,6 +165,7 @@ Verdugo.prototype = {
       renderOn: function ( divId ) { 
             // add the output of the renderer to the html element
               document.getElementById( divId ).appendChild( this.renderer.domElement );
+              return this;
             
       }
 
@@ -245,6 +246,8 @@ Verdugo.prototype = {
               // add the cube to the scene
               this.scene.add( _cube );
                 }
+            return this;
+
       }          
 
     /** 
@@ -292,6 +295,8 @@ Verdugo.prototype = {
                 // add the cube to the scene
                 this.scene.add( _cube );
             }
+            return this;
+
       }
 
     /** 
@@ -360,6 +365,8 @@ Verdugo.prototype = {
                 // add the cube to the scene
                 this.scene.add( _cube );
             }
+            return this;
+       
       }
 
     /** 
@@ -428,6 +435,8 @@ Verdugo.prototype = {
                 // add the cube to the scene
                 this.scene.add( _cube );
             }
+            return this;
+
       }
 
     /** 
@@ -491,6 +500,9 @@ Verdugo.prototype = {
          
                     // add the cube to the scene
                     this.scene.add( _cube );
+
+                    return this;
+
                 
       }
 
@@ -556,6 +568,9 @@ Verdugo.prototype = {
          
                     // add the cube to the scene
                     this.scene.add( _cube );
+
+                    return this;
+
                 
       }
 
@@ -589,6 +604,8 @@ Verdugo.prototype = {
          
                     // add the cube to the scene
                     this.scene.add( _cube );
+                    
+                    return this;
 
 
       }
@@ -624,6 +641,7 @@ Verdugo.prototype = {
                  
                             // add the cube to the scene
                             this.scene.add( _cube );
+                            return this;
 
 
       }
