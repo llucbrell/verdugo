@@ -99,10 +99,33 @@ _*.^            '.__dP^^~#,  ,_ *,
  * 
  * Builds a new 3d environment.
  * @class Verdugo
- *
+ * @param {JavasCript Object} config - Javascript object with the basic scene, camera, renderer and ligths configurations
+ * @default { scene: { color: '' } ,camera:  { position: { x: -50, y: 30, z: -90 } } ,renderer: { setSize: { width: window.innerWidth ,height: window.innerHeight },shadowMapEnabled: true} ,spotLight: { color: 0xffffff ,position: { x: -40 ,y:  60 ,z: -90 } ,castShadow: true }  };
  *
  */
-function Verdugo () {
+function Verdugo ( config ) {
+  // default values for config Object
+  this.config = config || { scene: { color: '' }
+                           ,camera:  { position: { x: -50
+                                                  , y: 30
+                                                  , z: -90 } 
+                                                   
+                                                } 
+                           ,renderer: { setSize: { width: window.innerWidth
+                                                  ,height: window.innerHeight
+                                                  }
+                                       ,shadowMapEnabled: true             
+
+                           }
+                           ,spotLight: { color: 0xffffff
+                                        ,position: {
+                                          x: -40
+                                         ,y:  60
+                                         ,z: -90
+                                        }
+                                        ,castShadow: true 
+                                      } 
+                          };
    
    /**
    * 
@@ -111,7 +134,7 @@ function Verdugo () {
    */
    this.scene= new THREE.Scene();
    /** use scene.background to set the background color*/
-   this.scene.background = new THREE.Color();
+   this.scene.background = new THREE.Color( this.config.scene.color );
 
    /**
    * 
@@ -121,9 +144,9 @@ function Verdugo () {
    */
    this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 );
    // position and point the camera to the center of the scene
-   this.camera.position.x = -50;
-   this.camera.position.y = 30;
-   this.camera.position.z = -90;
+   this.camera.position.x = this.config.camera.position.x;
+   this.camera.position.y = this.config.camera.position.y;
+   this.camera.position.z = this.config.camera.position.z;
    this.camera.lookAt( this.scene.position );
    
    /**
@@ -135,8 +158,8 @@ function Verdugo () {
    this.renderer = new THREE.WebGLRenderer();
    // set the default values of the renderer
    //this.renderer.setClearColorHex(new THREE.Color(0xEEEEEE, 1.0)); // changed to transparent by default
-   this.renderer.setSize( window.innerWidth, window.innerHeight );
-   this.renderer.shadowMapEnabled = true;
+   this.renderer.setSize( this.config.renderer.setSize.width, this.config.renderer.setSize.height );
+   this.renderer.shadowMapEnabled = this.config.renderer.shadowMapEnabled;
 
    
    /**
@@ -145,9 +168,9 @@ function Verdugo () {
    * @default position[-40,60,-90] -- castShadow
    *
    */ 
-   this.spotLight = new THREE.SpotLight( 0xffffff );
-   this.spotLight.position.set( -40, 60, -90 );
-   this.spotLight.castShadow = true;
+   this.spotLight = new THREE.SpotLight( this.config.spotLight.color );
+   this.spotLight.position.set(  this.config.spotLight.position.x, this.config.spotLight.position.y, this.config.spotLight.position.z );
+   this.spotLight.castShadow = this.config.spotLight.castShadow;
 
    //add spotlight to the scene
    this.scene.add( this.spotLight );
