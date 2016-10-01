@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verdugo-sphere-ex</title>
+</head>
+<body>
+<div id="webGLOutput"></div>
+
+<script type="text/javascript">
+function init(){
+// start verdugo
+var verdugo= new Verdugo();	
+// tell verdugo where you wanna render
+verdugo.renderOn("webGLOutput");
+
+var shoe_color= 0x000000
+var skin_color=0xFFD800;
+var overalls_color=0x0026FF;
+var glasses_color=0x808080;
+var eyes_color= 0xFFFFFF;
+
+
+
+// verdugo draws
+
+var BLOCK_SIZE = 2;
+var POSITION_X = 0;
+var POSITION_Y = -50;
+var POSITION_Z = 40;
+
+
+            verdugo.drawSphere([0,0,0] , 15, 10,10, overalls_color).drawCube([20,20,0], 5,5,5, glasses_color).orbitCam();
+
+
+       // console.log(verdugo.config);
+
+// render            
+verdugo.goAnim();
+}
+window.onload = init;
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+<script type="text/javascript" src="./js/Orbiter.js"></script>
+<script type="text/javascript" src="../index.js"></script>
+
+</body>
+</html>
